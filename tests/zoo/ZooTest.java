@@ -1,8 +1,11 @@
 package zoo;
 
+import animals.Animal;
 import animals.Elephant;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -39,6 +42,19 @@ public class ZooTest {
     zoo.createEnclosureWithAnimals("Elephants", elephant);
 
     assertNotNull(zoo.getEnclosure("Elephants"));
+  }
+
+  @Test
+  public void testCanCreateNewEnclosureWithArrayListOfAnimals() {
+    String name = "Elephants";
+
+    Elephant elephant = new Elephant("Shep", 1000);
+    ArrayList<Animal> animals = new ArrayList<>();
+    animals.add(elephant);
+
+    zoo.createEnclosureWithAnimals(name, animals);
+
+    assertNotNull(zoo.getEnclosure(name));
   }
 
   @Test

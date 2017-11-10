@@ -69,10 +69,12 @@ public class Zoo {
   }
 
   public void addVisitor(Visitor visitor) {
+    this.funds += ticketPrice;
     this.visitors.add(visitor);
   }
 
   public void removeVisitor(Visitor visitor) {
+    this.funds -= ticketPrice;
     this.visitors.remove(visitor);
   }
 }
