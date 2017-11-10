@@ -8,14 +8,26 @@ import java.util.HashMap;
 public class Zoo {
 
   private HashMap<String, Enclosure<Animal>> enclosures;
+  private ArrayList<Visitor> visitors;
+
   private int funds = 100000;
+  private int ticketPrice = 10;
 
   public Zoo() {
     this.enclosures = new HashMap<>();
+    this.visitors = new ArrayList<>();
   }
 
   public int getFunds() {
     return funds;
+  }
+
+  public int getTicketPrice() {
+    return ticketPrice;
+  }
+
+  public ArrayList<Visitor> getVisitors() {
+    return visitors;
   }
 
   public void createEnclosure(String name) {
@@ -54,5 +66,13 @@ public class Zoo {
         this.funds += animal.getValue();
       }
     }
+  }
+
+  public void addVisitor(Visitor visitor) {
+    this.visitors.add(visitor);
+  }
+
+  public void removeVisitor(Visitor visitor) {
+    this.visitors.remove(visitor);
   }
 }
