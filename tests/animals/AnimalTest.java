@@ -1,4 +1,5 @@
-import animals.Animal;
+package animals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

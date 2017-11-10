@@ -6,10 +6,17 @@ import java.util.ArrayList;
 
 public class Enclosure<T extends Animal> {
 
-  ArrayList<T> animals;
+  private ArrayList<T> animals;
 
   public Enclosure(ArrayList<T> animals) {
     this.animals = animals;
+  }
+
+  public Enclosure(T... animals) {
+    this.animals = new ArrayList<>();
+    for (T animal : animals) {
+      this.animals.add(animal);
+    }
   }
 
   public Enclosure() {
