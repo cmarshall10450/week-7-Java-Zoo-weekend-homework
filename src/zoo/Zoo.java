@@ -8,9 +8,14 @@ import java.util.HashMap;
 public class Zoo {
 
   private HashMap<String, Enclosure<Animal>> enclosures;
+  private int funds = 100000;
 
   public Zoo() {
     this.enclosures = new HashMap<>();
+  }
+
+  public int getFunds() {
+    return funds;
   }
 
   public void createEnclosure(String name) {
@@ -40,5 +45,14 @@ public class Zoo {
     }
 
     return total;
+  }
+
+  public void sellAnimal(Animal animal) {
+    for (Enclosure<Animal> enclosure : enclosures.values()) {
+      if (enclosure.getAnimals().contains(animal)) {
+        enclosure.removeAnimal(animal);
+        this.funds += animal.getValue();
+      }
+    }
   }
 }

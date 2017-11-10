@@ -16,6 +16,12 @@ public class ZooTest {
   }
 
   @Test
+  public void testCanGetFunds() {
+    int actual = zoo.getFunds();
+    assertEquals(100000, actual);
+  }
+
+  @Test
   public void testCanCreateNewEnclosure() {
     zoo.createEnclosure("Elephants");
     assertNotNull(zoo.getEnclosure("Elephants"));
@@ -52,6 +58,15 @@ public class ZooTest {
 
     int actual = zoo.getTotalNumberOfAnimals();
     assertEquals(1, actual);
+  }
+
+  @Test
+  public void testCanSellAnimal() {
+    Elephant elephant = new Elephant("Shep", 1000);
+    zoo.createEnclosureWithAnimals("Elephants", elephant);
+
+    zoo.sellAnimal(elephant);
+    assertEquals(101000, zoo.getFunds());
   }
 
 }
