@@ -28,4 +28,11 @@ public class Enclosure<T extends Animal> {
   }
 
 
+  public void addAnimal(T animal) {
+    this.animals.add(animal);
+  }
+
+  public void removeAnimal(T animal) {
+    this.animals.remove(animal);
+  }
 }

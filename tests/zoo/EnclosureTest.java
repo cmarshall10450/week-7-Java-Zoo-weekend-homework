@@ -1,13 +1,23 @@
 package zoo;
 
 import animals.Elephant;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class EnclosureTest {
+
+  Elephant elephant;
+
+  @Before
+  public void before() {
+    elephant = new Elephant("Shep", 1000);
+  }
 
   @Test
   public void testEnclosureCanStartWithEmptyList() {
@@ -19,7 +29,6 @@ public class EnclosureTest {
 
   @Test
   public void testEnclosureCanBeCreatedWithAnArrayListOfAnimals() {
-    Elephant elephant = new Elephant("Shep", 1000);
     ArrayList<Elephant> animalsList = new ArrayList<>();
     animalsList.add(elephant);
 
@@ -31,11 +40,28 @@ public class EnclosureTest {
 
   @Test
   public void testEnclosureCanBeCreatedWithParamsOfAnimals() {
-    Elephant elephant = new Elephant("Shep", 1000);
     Enclosure<Elephant> elephantEnclosure = new Enclosure<>(elephant);
 
     int actual = elephantEnclosure.getAnimals().size();
     assertEquals(1, actual);
+  }
+
+  @Test
+  public void testCanAddAnimalToEnclosure() {
+    Enclosure<Elephant> elephantEnclosure = new Enclosure<>();
+    elephantEnclosure.addAnimal(elephant);
+
+    boolean condition = elephantEnclosure.getAnimals().contains(elephant);
+    assertTrue(condition);
+  }
+
+  @Test
+  public void testCanRemoveAnimalFromEnclosure(){
+    Enclosure<Elephant> elephantEnclosure = new Enclosure<>(elephant);
+    elephantEnclosure.removeAnimal(elephant);
+
+    boolean condition = elephantEnclosure.getAnimals().contains(elephant);
+    assertFalse(condition);
   }
 
 }
