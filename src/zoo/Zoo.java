@@ -59,6 +59,17 @@ public class Zoo {
     return total;
   }
 
+  public int getTotalCashValueOfAnimals() {
+    int total = 0;
+    for (Enclosure<Animal> enclosure : enclosures.values()) {
+      for (Animal animal : enclosure.getAnimals()) {
+        total += animal.getValue();
+      }
+    }
+
+    return total;
+  }
+
   public void sellAnimal(Animal animal) {
     for (Enclosure<Animal> enclosure : enclosures.values()) {
       if (enclosure.getAnimals().contains(animal)) {

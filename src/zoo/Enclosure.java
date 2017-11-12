@@ -3,6 +3,7 @@ package zoo;
 import animals.Animal;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Enclosure<T extends Animal> {
 
@@ -14,9 +15,7 @@ public class Enclosure<T extends Animal> {
 
   public Enclosure(T... animals) {
     this.animals = new ArrayList<>();
-    for (T animal : animals) {
-      this.animals.add(animal);
-    }
+    this.animals.addAll(Arrays.asList(animals));
   }
 
   public Enclosure() {
@@ -26,7 +25,6 @@ public class Enclosure<T extends Animal> {
   public ArrayList<T> getAnimals() {
     return animals;
   }
-
 
   public void addAnimal(T animal) {
     this.animals.add(animal);
@@ -38,5 +36,15 @@ public class Enclosure<T extends Animal> {
 
   public int getNumAnimals() {
     return this.animals.size();
+  }
+
+  public T getAnimalByName(String name) {
+    for (T animal : animals) {
+      if (animal.getName().equals(name)) {
+        return animal;
+      }
+    }
+
+    return null;
   }
 }

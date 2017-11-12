@@ -1,7 +1,6 @@
 package zoo;
 
-import animals.Animal;
-import animals.Elephant;
+import animals.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -80,6 +79,22 @@ public class ZooTest {
 
     int actual = zoo.getTotalNumberOfAnimals();
     assertEquals(1, actual);
+  }
+
+  @Test
+  public void canGetTotalCashValueOfAnimals() {
+    Elephant elephant = new Elephant("Shep", 1000);
+    Giraffe giraffe = new Giraffe("Melvin", 1000);
+    Lion lion = new Lion("Snoop", 1000);
+    Tiger tiger = new Tiger("Tony", 1000);
+
+    zoo.createEnclosureWithAnimals("Elephants", elephant);
+    zoo.createEnclosureWithAnimals("Giraffes", giraffe);
+    zoo.createEnclosureWithAnimals("Lions", lion);
+    zoo.createEnclosureWithAnimals("Tigers", tiger);
+
+    int actual = zoo.getTotalCashValueOfAnimals();
+    assertEquals(4000, actual);
   }
 
   @Test

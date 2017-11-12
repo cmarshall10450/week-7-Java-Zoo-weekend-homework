@@ -6,9 +6,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-/**
- * Created by chris on 10/11/2017.
- */
 public class VisitorTest {
 
   Visitor visitor;
